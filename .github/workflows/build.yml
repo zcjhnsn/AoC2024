@@ -17,10 +17,10 @@ jobs:
 
     - uses: actions/cache@v2
       with:
-      path: .build
-      key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-      restore-keys: |
-        ${{ runner.os }}-spm-
+        path: .build
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
 
     - name: Build
       run: swift build
