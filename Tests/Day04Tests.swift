@@ -2,31 +2,35 @@
 // Advent of Code 2024 Day 4 Tests
 //
 
-import XCTest
+import Testing
 @testable import AdventOfCode
 
-@MainActor
-final class Day04Tests: XCTestCase {
-    let testInput = """
+fileprivate let testInput = """
 """
 
-    func testDay04_part1() throws {
+@Suite("Day 4 Tests") 
+struct Day04Tests {
+    @MainActor @Test("Day 4 Part 1")
+    func testDay04_part1() {
         let day = Day04(input: testInput)
-        XCTAssertEqual(day.part1(), 0)
+        #expect(day.part1() == 0)
     }
 
-    func testDay04_part1_solution() throws {
+    @MainActor @Test("Day 4 Part 1 Solution")
+    func testDay04_part1_solution() {
         let day = Day04(input: Day04.input)
-        XCTAssertEqual(day.part1(), 0)
+        #expect(day.part1() == 0)
     }
 
-    func testDay04_part2() throws {
+    @MainActor @Test("Day 4 Part 2")
+    func testDay04_part2() {
         let day = Day04(input: testInput)
-        XCTAssertEqual(day.part2(), 0)
+        #expect(day.part2() == 0)
     }
 
-    func testDay04_part2_solution() throws {
+    @MainActor @Test("Day 4 Part 2 Solution")
+    func testDay04_part2_solution() {
         let day = Day04(input: Day04.input)
-        XCTAssertEqual(day.part2(), 0)
+        #expect(day.part2() == 0)
     }
 }

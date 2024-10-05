@@ -2,31 +2,35 @@
 // Advent of Code 2024 Day 11 Tests
 //
 
-import XCTest
+import Testing
 @testable import AdventOfCode
 
-@MainActor
-final class Day11Tests: XCTestCase {
-    let testInput = """
+fileprivate let testInput = """
 """
 
-    func testDay11_part1() throws {
+@Suite("Day 11 Tests") 
+struct Day11Tests {
+    @MainActor @Test("Day 11 Part 1")
+    func testDay11_part1() {
         let day = Day11(input: testInput)
-        XCTAssertEqual(day.part1(), 0)
+        #expect(day.part1() == 0)
     }
 
-    func testDay11_part1_solution() throws {
+    @MainActor @Test("Day 11 Part 1 Solution")
+    func testDay11_part1_solution() {
         let day = Day11(input: Day11.input)
-        XCTAssertEqual(day.part1(), 0)
+        #expect(day.part1() == 0)
     }
 
-    func testDay11_part2() throws {
+    @MainActor @Test("Day 11 Part 2")
+    func testDay11_part2() {
         let day = Day11(input: testInput)
-        XCTAssertEqual(day.part2(), 0)
+        #expect(day.part2() == 0)
     }
 
-    func testDay11_part2_solution() throws {
+    @MainActor @Test("Day 11 Part 2 Solution")
+    func testDay11_part2_solution() {
         let day = Day11(input: Day11.input)
-        XCTAssertEqual(day.part2(), 0)
+        #expect(day.part2() == 0)
     }
 }
