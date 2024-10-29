@@ -8,7 +8,7 @@ import Testing
 fileprivate let testInput = """
 """
 
-@Suite("Day 3 Tests") 
+@Suite("Day 3 Tests")
 struct Day03Tests {
     @MainActor @Test("Day 3 Part 1")
     func testDay03_part1() {
