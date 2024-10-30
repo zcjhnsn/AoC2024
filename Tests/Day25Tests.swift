@@ -21,16 +21,4 @@ struct Day25Tests {
         let day = Day25(input: Day25.input)
         #expect(day.part1() == 0)
     }
-
-    @MainActor @Test("Day 25 Part 2")
-    func testDay25_part2() {
-        let day = Day25(input: testInput)
-        #expect(day.part2() == 0)
-    }
-
-    @MainActor @Test("Day 25 Part 2 Solution")
-    func testDay25_part2_solution() {
-        let day = Day25(input: Day25.input)
-        #expect(day.part2() == 0)
-    }
 }
