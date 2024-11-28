@@ -6,19 +6,19 @@ My [AoC 2024](https://adventofcode.com/2024) Solutions in Swift
 
 All code for all days is compiled into a single macOS commandline binary, which can be run either from within Xcode or from Terminal.
 
-Each day has at least 3 associated source files: 
+Each day usually has 3 associated source files: 
 
 * `DayX.swift` for the solution code
 * `DayX+Input.swift` for the puzzle input. This file is created by running the `input.sh` script (see below) but is not included in this repo for [legal reasons](https://www.reddit.com/r/adventofcode/wiki/faqs/copyright/inputs).
 * `DayXTests.swift` for the test suite, if the puzzle has test cases
 
-`AoC.swift` has the `main()` function which simply runs one (or all) of the puzzles.
+`AoC.swift` has the `main()` function which runs one (or all) of the puzzles, then prints the solution(s) and the elapsed ime.
 
-The code relies on my own [AoCTools](https://github.com/gereons/AoCTools) package where I started collecting utility functions for things frequently used in AoC, such as 2d and 3d points, hexagonal grids, an A\* pathfinder and more.
+The code relies on my own [AoCTools](https://github.com/gereons/AoCTools) package where I started collecting utility functions for things frequently used in AoC, such as 2D and 3D points, [hexagonal grids](https://www.redblobgames.com/grids/hexagons/), an [A\* pathfinder](https://en.wikipedia.org/wiki/A*_search_algorithm) and more.
 
 ### Xcode
 
-Open the project via the `Package.swift` file (`xed .` from Terminal in the project directory). By default, hitting `Cmd-R` will run the puzzle for the current calendar day. To override this, change `defaultDay` in `AoC.swift`.
+Open the project via the `Package.swift` file (`xed .` from Terminal in the project directory). `Cmd-R` will either run the puzzle for the current calendar day during December, or for all days in other months. To override this, change `defaultDay` in `AoC.swift`.
 
 `Cmd-U` runs the test suite for all 25 days. Run individual tests by clicking on them in the Test Inspector (`Cmd-6`)
 

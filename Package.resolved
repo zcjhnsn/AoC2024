@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gereons/AoCTools",
       "state" : {
-        "revision" : "b97741e77a3ac6325be10dece17cadd56245d042",
-        "version" : "0.1.1"
+        "revision" : "85b6c39cc2bcf70964253725c7e4903124fdda7d",
+        "version" : "0.1.2"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lukepistrol/SwiftLintPlugin",
       "state" : {
-        "revision" : "bea71d23db993c58934ee704f798a66d7b8cb626",
-        "version" : "0.57.0"
+        "revision" : "87454f5c9ff4d644086aec2a0df1ffba678e7f3c",
+        "version" : "0.57.1"
       }
     }
   ],
