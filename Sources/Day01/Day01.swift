@@ -12,15 +12,12 @@ final class Day01: AOCDay {
     let list2: [Int]
 
     init(input: String) {
-        var list1 = [Int]()
-        var list2 = [Int]()
-        for line in input.lines {
-            let ids = line.allInts()
-            list1.append(ids[0])
-            list2.append(ids[1])
-        }
-        self.list1 = list1
-        self.list2 = list2
+        let ints = input
+            .lines
+            .map { $0.allInts() }
+
+        list1 = ints.map { $0[0] }
+        list2 = ints.map { $0[1] }
     }
 
     func part1() -> Int {
