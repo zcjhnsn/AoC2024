@@ -8,31 +8,29 @@ import AoCTools
 
 final class Day01: AOCDay {
     let title = "Historian Hysteria"
-    let list1: [Int]
-    let list2: [Int]
+
+    let left: [Int]
+    let right: [Int]
 
     init(input: String) {
         let ints = input
             .lines
             .map { $0.allInts() }
 
-        list1 = ints.map { $0[0] }
-        list2 = ints.map { $0[1] }
+        left = ints.map { $0[0] }
+        right = ints.map { $0[1] }
     }
 
     func part1() -> Int {
-        zip(list1.sorted(by: <), list2.sorted(by: <))
+        zip(left.sorted(by: <), right.sorted(by: <))
             .map { abs($0 - $1) }
             .reduce(0, +)
     }
 
     func part2() -> Int {
-        var freq2 = [Int: Int]()
-        for i in list2 {
-            freq2[i, default: 0] += 1
-        }
-        return list1
-            .map { $0 * freq2[$0, default: 0] }
+        let rightFreq = Dictionary(right.map { ($0, 1) }, uniquingKeysWith: +)
+        return left
+            .map { $0 * rightFreq[$0, default: 0] }
             .reduce(0, +)
     }
 }
