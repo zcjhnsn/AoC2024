@@ -17,7 +17,8 @@ private struct Report {
     }
 
     var isSafe: Bool {
-        pairs.allSatisfy(increasing) || pairs.allSatisfy(decreasing)
+        let expectedSign = (pairs[0].0 - pairs[0].1).signum()
+        return pairs.allSatisfy { diffOk($0.0, $0.1, expectedSign) }
     }
 
     var isSafeWithDampener: Bool {
@@ -27,10 +28,10 @@ private struct Report {
 
         let firstNonInc = pairs
             .enumerated()
-            .first { index, element in !increasing(element.0, element.1) }
+            .first { index, element in !diffOk(element.0, element.1, 1) }
         let firstNonDec = pairs
             .enumerated()
-            .first { index, element in !decreasing(element.0, element.1) }
+            .first { index, element in !diffOk(element.0, element.1, -1) }
 
         for check in [firstNonInc!, firstNonDec!] {
             for index in [check.0, check.0 + 1] {
@@ -46,12 +47,8 @@ private struct Report {
         return false
     }
 
-    func increasing(_ a: Int, _ b: Int) -> Bool {
-        b > a && b - a < 4
-    }
-
-    func decreasing(_ a: Int, _ b: Int) -> Bool {
-        a > b && a - b < 4
+    func diffOk(_ a: Int, _ b: Int, _ expectedSign: Int) -> Bool {
+        (a - b).signum() == expectedSign && 1...3 ~= abs(a - b)
     }
 }
 
