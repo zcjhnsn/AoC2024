@@ -6,6 +6,7 @@
 
 import AoCTools
 import Algorithms
+import Parsing
 
 private struct Report {
     let data: [Int]
@@ -14,6 +15,18 @@ private struct Report {
     init(data: [Int]) {
         self.data = data
         self.pairs = data.adjacentPairs().map { ($0.0, $0.1) }
+    }
+
+    struct Parser: Parsing.Parser {
+        var body: some Parsing.Parser<Substring, Report> {
+            Parse(Report.init(data:)) {
+                Many {
+                    Int.parser()
+                } separator: {
+                    " "
+                }
+            }
+        }
     }
 
     var isSafe: Bool {
@@ -58,7 +71,7 @@ final class Day02: AOCDay {
     private let reports: [Report]
 
     init(input: String) {
-        reports = input.lines.map { Report(data: $0.allInts()) }
+        reports = input.lines.compactMap { try? Report.Parser().parse($0) }
     }
 
     func part1() -> Int {

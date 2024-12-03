@@ -9,13 +9,14 @@ let package = Package(
         .macOS(.v15)
     ],
     dependencies: [
+        .package(url: "https://github.com/pointfreeco/swift-parsing", from: "0.13.0"),
         .package(url: "https://github.com/gereons/AoCTools", from: "0.1.1")
 //        .package(path: "../AoCTools")
     ],
     targets: [
         .executableTarget(
             name: "AdventOfCode",
-            dependencies: [ "AoCTools" ],
+            dependencies: [ "AoCTools", .product(name: "Parsing", package: "swift-parsing")],
             path: "Sources"),
         .testTarget(
             name: "AoCTests",

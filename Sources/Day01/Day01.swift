@@ -5,6 +5,22 @@
 //
 
 import AoCTools
+import Parsing
+
+private struct Pair {
+    let left: Int
+    let right: Int
+
+    struct Parser: Parsing.Parser {
+        var body: some Parsing.Parser<Substring, Pair> {
+            Parse(Pair.init(left:right:)) {
+                Int.parser()
+                "   "
+                Int.parser()
+            }
+        }
+    }
+}
 
 final class Day01: AOCDay {
     let title = "Historian Hysteria"
@@ -13,12 +29,10 @@ final class Day01: AOCDay {
     let right: [Int]
 
     init(input: String) {
-        let ints = input
-            .lines
-            .map { $0.allInts() }
+        let pairs = input.lines.compactMap { try? Pair.Parser().parse($0) }
 
-        left = ints.map { $0[0] }
-        right = ints.map { $0[1] }
+        left = pairs.map(\.left)
+        right = pairs.map(\.right)
     }
 
     func part1() -> Int {
