@@ -70,23 +70,22 @@ final class Day03: AOCDay {
         }
 
         var ignore = false
-        var pairs = [(Int, Int)]()
-        for line in lines {
-            let matches = line.matches(of: regex)
-            for match in matches {
-                switch match.output.0 {
-                case "don't()":
-                    ignore = true
-                case "do()":
-                    ignore = false
-                default:
-                    if !ignore {
-                        pairs.append((match[x], match[y]))
+        return lines
+            .flatMap { line in
+                line.matches(of: regex).compactMap { (match) -> (Int, Int)? in
+                    switch match.output.0 {
+                    case "do()":
+                        ignore = false
+                        return nil
+                    case "don't()":
+                        ignore = true
+                        return nil
+                    default:
+                        return ignore ? nil : (match[x], match[y])
                     }
                 }
             }
-        }
-
-        return pairs.reduce(0) { $0 + $1.0 * $1.1 }
+            .map { $0.0 * $0.1 }
+            .reduce(0, +)
     }
 }
